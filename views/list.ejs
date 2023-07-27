@@ -1,0 +1,43 @@
+<%- include("header") -%>
+
+    <div class="container">
+        <h1>To Do</h1>
+
+        <div class="box">
+            <div class="task_container">
+                <% for(var i=0; i<items.length; i++){%>
+                    <div class="item">
+                        <ul>
+                            <li>
+                                <%= items[i].task_name %>
+                            </li>
+                        </ul>
+
+                        <div class="update">
+                            <% if(items[i].completed){ %>
+                                Completed
+                            <% }else{ %>
+                                <a href="/completed/<%= items[i].id %>">Ongoing</a>
+                            <% } %>
+                            
+                            <a href="/<%= items[i].id %>">
+                                <button type="submit" name="submit" class="submit">-</button>
+                            </a>
+                                        
+                        </div>
+
+                    </div>
+                    <%}%>
+            </div>
+
+            <form action="/" method="post" class="submit">
+                <input type="text" name="newtask" placeholder="Enter New Task" required>
+                <button type="submit" name="submit">+</button>
+            </form>
+        </div>
+
+    </div>
+
+    </body>
+
+    </html>
